@@ -47,10 +47,15 @@ end
     @@all.sort_by {|song| song.name}
   end
 
-  def self.new_from_filename(song_name)
-    song = self.new
-    song.artist_name = song_name.match(/[^-]/)
-    song.name = song_name.match(/-\s[^.]{1,200}/)
+  def self.new_from_filename(filename)
+  division = filename.split(" - ")
+  artist_name = division[0]
+  song_name = division[1].gsub(".mp3", "")
+
+  song = self.new
+  song.name = song_name
+  song.artist_name = artist_name
+  song
 end
 
 end
