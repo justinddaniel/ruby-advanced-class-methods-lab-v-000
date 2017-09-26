@@ -46,4 +46,9 @@ end
   def self.alphabetical
     @@all.sort_by {|song| song.name}
   end
+
+  def self.new_from_filename(song_name)
+    song = self.new
+    song.artist_name = song_name.match(/[^-]/)
+    song.name = song_name.match(/-\s[^.]{1,200}/)
 end
