@@ -44,7 +44,10 @@ class Song
 end
 
   def self.alphabetical
-    binding.pry
-    @@all.sort
+    @@all.each do |song|
+      song.name.sort do |a, b|
+        a <=> b
+      end
+    end
   end
 end
